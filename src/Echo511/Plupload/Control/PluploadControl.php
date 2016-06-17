@@ -13,7 +13,7 @@ use Echo511\Plupload\Service\Uploader;
 use Nette\Application\UI\Control;
 use Nette\Caching\Cache;
 use Nette\Caching\IStorage;
-use Nette\Utils\Strings;
+use Nette\Utils\Random;
 
 /**
  * Render component and handle uploads.
@@ -66,7 +66,7 @@ class PluploadControl extends Control
 		$this->cacheStorage = $cacheStorage;
 
 		$this->templateFile = __DIR__ . '/../templates/control/plupload.latte';
-		$this->id = Strings::random();
+		$this->id = Random::generate();
 	}
 
 
