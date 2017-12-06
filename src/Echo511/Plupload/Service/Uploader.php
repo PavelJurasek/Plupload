@@ -2,7 +2,7 @@
 
 /**
  * This class is part of Echo511\Plupload. Licence free.
- * 
+ *
  * The upload-handle part of the file was used from the original example provided with Plupload.
  */
 
@@ -10,13 +10,15 @@ namespace Echo511\Plupload\Service;
 
 use Echo511\Plupload\Entity\IUploadFactory;
 use Exception;
-use Nette\Object;
+use Nette\SmartObject;
 
 /**
- * Service handeling upload.
+ * Service handling upload.
  */
-class Uploader extends Object
+class Uploader
 {
+
+	use SmartObject;
 
 	/** @var string */
 	private $tempDir;
@@ -147,5 +149,5 @@ class Uploader extends Object
 
 class UploaderException extends Exception
 {
-	
+
 }

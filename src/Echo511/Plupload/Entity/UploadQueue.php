@@ -6,15 +6,17 @@
 
 namespace Echo511\Plupload\Entity;
 
-use Nette\Object;
+use Nette\SmartObject;
 
 /**
  * Queue of already uploaded files by unique widget. On page refresh id refreshes.
- * 
+ *
  * @author Nikolas Tsiongas
  */
-class UploadQueue extends Object
+class UploadQueue
 {
+
+	use SmartObject;
 
 	/** @var string */
 	private $id;
@@ -80,4 +82,5 @@ interface IUploadQueueFactory
 
 	/** @return UploadQueue */
 	function create($id);
+
 }

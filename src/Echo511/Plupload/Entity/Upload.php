@@ -6,15 +6,18 @@
 
 namespace Echo511\Plupload\Entity;
 
-use Nette\Object;
+use Nette\InvalidStateException;
+use Nette\SmartObject;
 
 /**
  * Uploaded file envelope.
- * 
+ *
  * @author Nikolas Tsiongas
  */
-class Upload extends Object
+class Upload
 {
+
+	use SmartObject;
 
 	/** @var string */
 	private $filename;
@@ -62,7 +65,7 @@ class Upload extends Object
 		@mkdir(dirname($location), 0777, TRUE); // @ - dir may already exist
 		@unlink($location); // @ - file may not exists
 		if (!call_user_func(is_uploaded_file($this->filename) ? 'move_uploaded_file' : 'rename', $this->filename, $location)) {
-			throw new Nette\InvalidStateException("Unable to move uploaded file '$this->filename' to '$location'.");
+			throw new InvalidStateException("Unable to move uploaded file '$this->filename' to '$location'.");
 		}
 		chmod($location, 0666);
 		$this->filename = $location;
@@ -78,4 +81,5 @@ interface IUploadFactory
 
 	/** @return Upload */
 	function create($filename, $name);
+
 }
